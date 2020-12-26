@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{#
+    This is the base layout. This setups the structure of the whole
+    page and is used for all html-pages.
+#}
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        
+        <!-- Local stylesheet -->
+        <link rel="stylesheet" href={{ url_for('static', filename='css/styles.css') }}>
+
+        <!-- Block for scripts to be run in the header -->
+        {% block base_top_scripts %}{% endblock %}
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body class="text-color">
+        <!-- Main block for body -->
+        {% block body %}{% endblock %}
+
+        <!-- Block for scripts to be run in the bottom of the body -->
+        {% block base_bottom_scripts %}{% endblock %}
+    </body>
+</html>
+
