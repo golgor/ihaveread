@@ -32,13 +32,15 @@ def add_to_finished(book):
 
 def _add(book, db):
     if isinstance(book, Book):
-        id = db.insert_one(book.get_dict())
+        db_entry = book.get_dict()
+        db_entry["timestamp"] = datetime.datetime.now()
+        id = db.insert_one(db_entry)
         return id
     else:
         raise TypeError
 
 
-def main():
+def _main():
     pass
 
 
@@ -51,4 +53,4 @@ def get_data_from_isbn():
 
 
 if __name__ == "__main__":
-    main()
+    _main()
