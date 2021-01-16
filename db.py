@@ -1,7 +1,7 @@
 import os
 import pymongo
 import datetime
-
+from books import Book
 
 # API-keys from WSL-environment
 MONGODB_API_KEY = os.environ.get("MONGODB_API_KEY")
@@ -13,8 +13,6 @@ client = pymongo.MongoClient(
 
 # Creating a database with the name 'test'
 db = client.books
-wanted_db = db.wanted
-read_db = db.read
 
 # TODO: https://medium.com/@chanyamhung/apis-books-data-via-isbn-d29285572683
 # TODO: https://www.bokus.com/cgi-bin/product_search.cgi?show_advanced=1
@@ -24,19 +22,24 @@ read_db = db.read
 # TODO: https://en.wikipedia.org/wiki/International_Standard_Book_Number
 
 
-def main():
-    post = {
-        "author": "Mike Snow",
-        "isbn": "My first blog post!",
-        "tags": ["mongodb", "python", "pymongo"],
-        "date": datetime.datetime.utcnow(),
-        "reason": "Sounds awesome"
-    }
+def add_to_wanted(book):
+    _add(book, db.wanted)
 
-    # inserting the variable books into a collection name post.'
-    # Use "."-notation.
-    id = wanted_db.insert_one(post).inserted_id
-    print(id)
+
+def add_to_finished(book):
+    _add(book, db.finished)
+
+
+def _add(book, db):
+    if isinstance(book, Book):
+        id = db.insert_one(book.get_dict())
+        return id
+    else:
+        raise TypeError
+
+
+def main():
+    pass
 
 
 def get_data_from_isbn():

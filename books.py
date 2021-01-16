@@ -8,7 +8,7 @@ class Book:
         self.summary = summary
 
     def get_dict(self) -> dict:
-        if not self.book_dict:
+        if not hasattr(self, "book_dict"):
             self.book_dict = {
                 "title": self.title,
                 "author": self.author,
@@ -17,7 +17,7 @@ class Book:
         return self.book_dict
 
     def __str__(self):
-        return f"{self.title}, by {self.author} {self.year}"
+        return f"{self.title}, by {self.author}"
 
 
 class BookCase:
@@ -57,7 +57,8 @@ if __name__ == '__main__':
         Book(
             title="Find Your Why",
             author="Simon Sinek",
-            year=2017
+            isbn="12451341241"
         )
     )
     print(read_books.get_titles())
+    print(book1.get_dict())
