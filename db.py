@@ -39,20 +39,6 @@ def main():
     print(id)
 
 
-def validate_isbn_10():
-    # Prefix – alla ISBN inleds med prefixet 978.
-    # Områdesbeteckning – för nationellt, geografiskt eller
-    #   språkligt bestämda områden (Sverige har till exempel 91).
-    # Förlagsbeteckning – vilket förlag boken ges ut genom.
-    # identifikationssiffror
-    # En kontrollsiffra
-    pass
-
-
-def validate_isbn_13():
-    pass
-
-
 def get_data_from_isbn():
     """Used to fetch data about a book from the ISBN,
     either ISBN API or OpenLibrary. Might be placed in another

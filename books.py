@@ -1,8 +1,8 @@
 class Book:
-    def __init__(self, title: str, author: str, year: int) -> None:
+    def __init__(self, title: str, author: str, isbn: str) -> None:
         self.title = title
         self.author = author
-        self.year = year
+        self.isbn = isbn
 
     def add_summary(self, summary: str) -> None:
         self.summary = summary
@@ -12,7 +12,7 @@ class Book:
             self.book_dict = {
                 "title": self.title,
                 "author": self.author,
-                "year": self.year
+                "isbn": self.isbn
             }
         return self.book_dict
 
@@ -29,6 +29,20 @@ class BookCase:
 
     def get_titles(self) -> list:
         return [book.title for book in self.bookcase]
+
+
+def validate_isbn_10():
+    # Prefix – alla ISBN inleds med prefixet 978.
+    # Områdesbeteckning – för nationellt, geografiskt eller
+    #   språkligt bestämda områden (Sverige har till exempel 91).
+    # Förlagsbeteckning – vilket förlag boken ges ut genom.
+    # identifikationssiffror
+    # En kontrollsiffra
+    pass
+
+
+def validate_isbn_13():
+    pass
 
 
 if __name__ == '__main__':
