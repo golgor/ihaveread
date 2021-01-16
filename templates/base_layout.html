@@ -10,16 +10,43 @@
         
         <!-- Local stylesheet -->
         <link rel="stylesheet" href={{ url_for('static', filename='css/styles.css') }}>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
         <!-- Block for scripts to be run in the header -->
         {% block base_top_scripts %}{% endblock %}
 
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body class="text-color">
+        <div class="ui attached stackable menu">
+            <div class="ui container">
+              <a class="item" href="/">
+                <i class="home icon"></i> Home
+              </a>
+              <a class="item" href="/add/wanted">
+                <i class="dollar sign icon"></i> Wanted books
+              </a>
+              <a class="item" href="/add/finished">
+                <i class="check icon"></i> Finished books
+              </a>
+              <div class="ui simple dropdown item">
+                Settings
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a class="item"><i class="edit icon"></i> Edit Profile</a>
+                  <a class="item"><i class="globe icon"></i> Choose Language</a>
+                  <a class="item"><i class="settings icon"></i> Account Settings</a>
+                </div>
+              </div>
+              <div class="right item">
+                <div class="ui input" data-children-count="1"><input type="text" placeholder="Search..."></div>
+              </div>
+            </div>
+          </div>
+
         <!-- Main block for body -->
         {% block body %}{% endblock %}
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
         <!-- Block for scripts to be run in the bottom of the body -->
         {% block base_bottom_scripts %}{% endblock %}
     </body>
