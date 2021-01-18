@@ -28,6 +28,9 @@
               <a class="item" href="/add/finished">
                 <i class="check icon"></i> Finished books
               </a>
+              <a class="item" onclick="show_modal()">
+                <i class="book icon"></i> Add new book
+              </a>
               <div class="ui simple dropdown item">
                 Settings
                 <i class="dropdown icon"></i>
@@ -42,11 +45,42 @@
               </div>
             </div>
           </div>
-
+          <div class="ui modal" id="testing">
+            <i class="close icon"></i>
+            <div class="header">
+              Add book
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+                <img src={{ url_for('static', filename='img/books.jpg')}}>
+              </div>
+              <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui positive deny button">
+                Add book
+              </div>
+              <div class="ui negative right labeled icon button">
+                Cancel
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </div>
         <!-- Main block for body -->
         {% block body %}{% endblock %}
-
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
+        <script>
+          function show_modal(){
+            $('.ui.modal')
+              .modal('show')
+            ;
+          }
+        </script>
         <!-- Block for scripts to be run in the bottom of the body -->
         {% block base_bottom_scripts %}{% endblock %}
     </body>
