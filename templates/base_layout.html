@@ -55,9 +55,27 @@
                 <img src={{ url_for('static', filename='img/books.jpg')}}>
               </div>
               <div class="description">
-                <div class="ui header">We've auto-chosen a profile image for you.</div>
-                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-                <p>Is it okay to use this photo?</p>
+                <div class="ui top attached tabular menu">
+                  <a class="item active" data-tab="isbn_tab">ISBN</a>
+                  <a class="item" data-tab="manual_tab">Manual</a>
+                </div>
+                <div class="ui bottom attached tab segment active" data-tab="isbn_tab">
+                  <div class="ui form">
+                    <div class="field">
+                      <label>ISBN-Number</label>
+                      <input type="text" name="last-name" placeholder="9781509808311">
+                    </div>
+                    <button class="ui primary button">
+                      Search
+                    </button>
+                    <button class="ui negative button">
+                      Clear
+                    </button>
+                  </div>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="manual_tab">
+                  MANUAL!
+                </div>
               </div>
             </div>
             <div class="actions">
@@ -80,6 +98,7 @@
               .modal('show')
             ;
           }
+          $('.tabular.menu .item').tab();
         </script>
         <!-- Block for scripts to be run in the bottom of the body -->
         {% block base_bottom_scripts %}{% endblock %}
